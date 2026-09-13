@@ -35,8 +35,3 @@ Follow these steps to run the project locally on your machine:
 ### Prerequisites
 Make sure you have **Node.js** installed on your system.
 
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/YOUR_USERNAME/weather-app.git](https://github.com/YOUR_USERNAME/weather-app.git)
