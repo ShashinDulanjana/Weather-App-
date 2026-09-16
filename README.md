@@ -1,4 +1,3 @@
-# 🌤️ Atmosphere - Modern Glassmorphic Weather Dashboard
 
 ![React](https://img.shields.io/badge/React-18.x-61DAFB?style=flat-square&logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=flat-square&logo=vite)
