@@ -7,7 +7,6 @@
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: #f8fafc;
-  /* Scroll වෙන්න පුළුවන් වෙන්න overflow හරිගැස්සුවා */
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -74,7 +73,7 @@ body {
 .thunder-bg { background: linear-gradient(-45deg, #312e81, #1e1b4b, #020617, #4c1d95); }
 .snowy-bg { background: linear-gradient(-45deg, #38bdf8, #0284c7, #7dd3fc, #0369a1); }
 
-/* Main Glassmorphism Container (Desktop Dashboard Layout) */
+/* Main Glassmorphism Container */
 .app-container {
   position: relative;
   z-index: 2;
@@ -88,8 +87,8 @@ body {
     0 30px 60px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   width: 100%;
-  max-width: 850px; /* PC Screens වලට පැත්තට පළල් කළා */
-  max-height: 90vh; /* Screen එකෙන් එළියට යද්දී Scrollbar එක එනවා */
+  max-width: 850px;
+  max-height: 90vh;
   overflow-y: auto;
 }
 
@@ -180,10 +179,99 @@ body {
   box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
 }
 
+/* Location Button Style */
+.location-btn {
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-btn:hover {
+  background: rgba(56, 189, 248, 0.4);
+  border-color: #38bdf8;
+  transform: scale(1.05);
+}
+
+/* Quick Access / Favorites Glass Chips */
+.quick-access-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.quick-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.quick-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f8fafc;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+
+.chip-btn:hover {
+  background: rgba(56, 189, 248, 0.3);
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+.chip-btn.active-chip {
+  background: rgba(56, 189, 248, 0.8);
+  color: #0f172a;
+  border-color: #7dd3fc;
+  font-weight: 700;
+}
+
+.chip-remove {
+  font-size: 14px;
+  margin-left: 2px;
+  opacity: 0.6;
+  border-radius: 50%;
+  padding: 0 4px;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.chip-remove:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.3);
+  color: #f87171;
+}
+
 /* Desktop Grid Layout for Weather Card */
 .weather-card {
   display: grid;
-  grid-template-columns: 1fr 1.3fr; /* වම් පැත්තේ Main Temp එක, දකුණු පැත්තේ Highlights & Forecast */
+  grid-template-columns: 1fr 1.3fr;
   gap: 20px;
   background: rgba(0, 0, 0, 0.15);
   padding: 24px;
@@ -302,106 +390,112 @@ body {
 .forecast-card img { width: 32px; height: 32px; }
 .forecast-temp { font-size: 12px; font-weight: 700; color: #38bdf8; }
 
-/* Mobile View Overrides (Mobile එකේදී නියමෙට 1 Column වෙනවා) */
+/* ==========================================
+   ENHANCED MOBILE & TABLET RESPONSIVE STYLES
+   ========================================== */
+
 @media (max-width: 768px) {
+  .app-wrapper {
+    padding: 15px 10px;
+    align-items: flex-start;
+  }
+
   .app-container {
     max-width: 100%;
-    padding: 20px 16px;
+    max-height: none;
+    padding: 20px 15px;
+    border-radius: 20px;
   }
+
+  .header-bar {
+    margin-bottom: 15px;
+  }
+
+  .header-bar h1 {
+    font-size: 20px;
+  }
+
+  .unit-toggle-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .search-form {
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .search-form input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .location-btn, 
+  .search-form button {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .quick-access-container {
+    margin-bottom: 15px;
+  }
+
   .weather-card {
     grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 18px 12px;
   }
+
   .main-weather-left {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     padding-right: 0;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
+  }
+
+  .temp-box h3 {
+    font-size: 42px;
+  }
+
+  .weather-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .forecast-container {
+    overflow-x: auto;
+    padding-bottom: 8px;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .forecast-card {
+    min-width: 65px;
+    padding: 8px 6px;
   }
 }
-/* Quick Access / Favorites Glass Chips */
-.quick-access-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
 
-.quick-title {
-  font-size: 12px;
-  font-weight: 600;
-  color: #cbd5e1;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+@media (max-width: 480px) {
+  .search-form {
+    flex-wrap: wrap;
+  }
 
-.quick-chips {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
+  .search-form input {
+    width: 100%;
+    flex: 1 1 100%;
+  }
 
-.chip-btn {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #f8fafc;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.25s ease;
-}
+  .location-btn,
+  .search-form button {
+    flex: 1;
+  }
 
-.chip-btn:hover {
-  background: rgba(56, 189, 248, 0.3);
-  border-color: #38bdf8;
-  transform: translateY(-2px);
-}
-
-.chip-btn.active-chip {
-  background: rgba(56, 189, 248, 0.8);
-  color: #0f172a;
-  border-color: #7dd3fc;
-  font-weight: 700;
-}
-
-.chip-remove {
-  font-size: 14px;
-  margin-left: 2px;
-  opacity: 0.6;
-  border-radius: 50%;
-  padding: 0 4px;
-  transition: opacity 0.2s, background 0.2s;
-}
-
-.chip-remove:hover {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.3);
-  color: #f87171;
-}
-/* Location Button Style */
-.location-btn {
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 14px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.location-btn:hover {
-  background: rgba(56, 189, 248, 0.4);
-  border-color: #38bdf8;
-  transform: scale(1.05);
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
 }
