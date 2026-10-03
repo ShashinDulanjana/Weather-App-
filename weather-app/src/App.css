@@ -498,4 +498,56 @@ body {
   .highlights-grid {
     grid-template-columns: 1fr;
   }
+  /* Mobile Weather Layout Fixes */
+@media (max-width: 768px) {
+  .app-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px 12px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .weather-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 16px 12px;
+    box-sizing: border-box;
+  }
+
+  .main-weather-left {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-right: 0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+
+  .secondary-weather-right {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .highlight-card {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+}
 }
